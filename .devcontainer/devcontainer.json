@@ -1,6 +1,12 @@
 {
   "name": "Laravel 12 + Filament",
   "image": "mcr.microsoft.com/devcontainers/php:8.3",
+  "features": {
+    "ghcr.io/devcontainers/features/php:1": {
+      "version": "8.3",
+      "extensions": "intl, mbstring, xml, ctype, json, openssl, pdo, tokenizer, zip"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -9,7 +15,6 @@
       ]
     }
   },
-  "updateContentCommand": "sudo docker-php-ext-install intl && composer install && cp .env.example .env && php artisan key:generate",
-  "postCreateCommand": "sudo docker-php-ext-enable intl && composer install && cp .env.example .env && php artisan key:generate",
+  "postCreateCommand": "composer install && cp .env.example .env && php artisan key:generate",
   "forwardPorts": [8000]
 }
