@@ -1,20 +1,21 @@
 {
-  "name": "Laravel 12",
+  "name": "Laravel 12 + Filament",
   "image": "mcr.microsoft.com/devcontainers/php:8.3",
+  "features": {
+    "ghcr.io/devcontainers/features/php:1": {
+      "version": "8.3",
+      "installIntl": true,
+      "extensions": "mbstring, xml, ctype, json, openssl, pdo, tokenizer, zip"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
         "bmewburn.vscode-intelephense-client",
-        "xdebug.php-debug",
-        "editorconfig.editorconfig"
+        "xdebug.php-debug"
       ]
     }
   },
   "postCreateCommand": "composer install && cp .env.example .env && php artisan key:generate",
-  "forwardPorts": [8000],
-  "portsAttributes": {
-    "8000": {
-      "label": "Laravel App"
-    }
-  }
+  "forwardPorts": [8000]
 }
