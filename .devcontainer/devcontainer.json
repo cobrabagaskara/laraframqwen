@@ -1,29 +1,13 @@
 {
-  "name": "Laravel with SQLite",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "laravel",
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-  "forwardPorts": [8000],
-  "portsAttributes": {
-    "8000": {
-      "label": "Laravel Application",
-      "onAutoForward": "openPreview"
-    }
-  },
-  "postCreateCommand": "chmod +x .devcontainer/post-create.sh && .devcontainer/post-create.sh",
+  "name": "Laravel 12",
+  "image": "mcr.microsoft.com/devcontainers/php:8.3",
   "customizations": {
     "vscode": {
       "extensions": [
-        "mikestead.dotenv",
-        "amiralizadeh9480.laravel-extra-intellisense",
-        "ryannaddy.laravel-artisan",
-        "onecentlin.laravel5-snippets",
-        "onecentlin.laravel-blade",
         "bmewburn.vscode-intelephense-client",
-        "bradlc.vscode-tailwindcss",
-        "esbenp.prettier-vscode"
+        "xdebug.php-debug"
       ]
     }
   },
-  "remoteUser": "vscode"
+  "forwardPorts": [8000]
 }
