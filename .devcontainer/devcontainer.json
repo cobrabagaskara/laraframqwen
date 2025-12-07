@@ -1,6 +1,12 @@
 {
-  "name": "Laravel + Filament (Full PHP Extensions)",
-  "image": "webdevops/php:8.3-cli",
+  "name": "Laravel 12 + Filament",
+  "image": "mcr.microsoft.com/devcontainers/php:8.3",
+  "features": {
+    "ghcr.io/devcontainers/features/php:1": {
+      "version": "8.3",
+      "extensions": "intl, mbstring, xml, ctype, json, openssl, pdo, tokenizer, zip"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
