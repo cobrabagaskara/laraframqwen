@@ -1,20 +1,34 @@
-
-  "name": "Laravel 12",
+{
+  "name": "Laravel 12 with Filament",
   "image": "mcr.microsoft.com/devcontainers/php:8.3",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    },
+    "ghcr.io/devcontainers-contrib/features/php-extensions:1": {
+      "extensions": "pdo_sqlite,sqlite3,gd,zip,mbstring,xml,tokenizer,fileinfo"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
         "bmewburn.vscode-intelephense-client",
         "xdebug.php-debug",
-        "editorconfig.editorconfig"
+        "editorconfig.editorconfig",
+        "mikestead.dotenv",
+        "amiralizadeh9480.laravel-extra-intellisense"
       ]
     }
   },
-  "postCreateCommand": "composer install && cp .env.example .env && php artisan key:generate",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
   "forwardPorts": [8000],
   "portsAttributes": {
     "8000": {
       "label": "Laravel App"
     }
+  },
+  "containerEnv": {
+    "DB_CONNECTION": "sqlite",
+    "DB_DATABASE": "${containerWorkspaceFolder}/database/database.sqlite"
   }
 }
