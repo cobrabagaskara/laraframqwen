@@ -1,21 +1,41 @@
 {
-  "name": "Laravel 12 + Filament",
+  "name": "Laravel + Filament 4 (Optimal)",
   "image": "mcr.microsoft.com/devcontainers/php:8.3",
+
   "features": {
     "ghcr.io/devcontainers/features/php:1": {
       "version": "8.3",
       "installIntl": true,
-      "extensions": "mbstring, xml, ctype, json, openssl, pdo, tokenizer, zip"
-    }
+      "extensions": "mbstring, pdo, pdo_mysql, tokenizer, xml, ctype, json, openssl, zip, fileinfo, sqlite3"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/redis:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
+
   "customizations": {
     "vscode": {
       "extensions": [
         "bmewburn.vscode-intelephense-client",
-        "xdebug.php-debug"
+        "xdebug.php-debug",
+        "onecentlin.laravel-blade",
+        "amiralizadeh9480.laravel-extra-intellisense",
+        "christian-kohler.path-intellisense"
       ]
     }
   },
-  "postCreateCommand": "composer install && cp .env.example .env && php artisan key:generate",
-  "forwardPorts": [8000]
+
+  "updateContentCommand": "composer install",
+
+  "onCreateCommand": "cp .env.example .env || true",
+
+  "postCreateCommand": "php artisan key:generate && npm install && php artisan config:clear && php artisan cache:clear",
+
+  "forwardPorts": [8000, 6379],
+
+  "postStartCommand": "php artisan serve --host=0.0.0.0 --port=8000",
+
+  "remoteUser": "vscode"
 }
